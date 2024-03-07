@@ -15,6 +15,10 @@ head{
     height:100%;
 }
 
+a {
+    text-decoration: none;
+}
+
 .ProjText {
   margin-left: 9.5vw;
   max-width: calc(100% - 19vw); /* Adjusted value */
