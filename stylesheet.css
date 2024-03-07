@@ -19,6 +19,19 @@ a {
     text-decoration: none;
 }
 
+.title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: futura-pt , sans-serif;
+  font-size: 3em;
+  color: #8DF0D4 ; /* #3A947A*/
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+}
+
 .ProjText {
   margin-left: 9.5vw;
   max-width: calc(100% - 19vw); /* Adjusted value */
