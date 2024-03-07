@@ -42,9 +42,23 @@ a {
 .AboutImage {
   margin-left: 9.5vw;
   margin-right: 2vw;
-  max-width: calc(100% - 19vw); /* Adjusted value */
   overflow-wrap: break-word;
   font-family: futura-pt , sans-serif;
+  padding: 0px 0px;
+}
+
+.AboutImage img{
+  width: 38vw;
+  height: auto;
+  padding: 0px 0px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10vh; 
+  width: 100%;
+  padding:0px 0px;
 }
 
 .AboutText {
@@ -72,11 +86,11 @@ a {
 }
 
 .aboutimg {
-    flex-basis: 42%;
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
-    object-fit: contain;
+    
+    width: 88.5vw;
+    margin-left: 9.5vw;
+    margin-right: 2vw;
+    align-self: flex-start;
     position: relative;
 }
 
@@ -198,12 +212,6 @@ th {
    margin: 0;
    padding: 0;
  }
-
- .wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10vh; 
-}
 
  #gallery {
   display: flex;
