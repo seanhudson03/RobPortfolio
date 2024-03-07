@@ -97,13 +97,18 @@
                     msnry = new Masonry(ulElement, {
                         itemSelector: 'li',
                         columnWidth: 300, /* This should match the width of the grid items */
-                        fitWidth: true /* This will center the grid within its container */
+                        fitWidth: true, /* This will center the grid within its container */
+                        gutter: 10
                     });
+
+                    masnry.layout();
+
                 });
                 // Call the layout method on window resize
                 window.addEventListener('load', function() {
                     if (msnry) {
                         msnry.layout();
+                        
                     }
                 });
 

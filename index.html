@@ -94,8 +94,12 @@ imagesLoaded(ulElement, function() {
     new Masonry(ulElement, {
         itemSelector: 'li',
         columnWidth: columnWidth,
-        fitWidth: true
+        fitWidth: true,
+        gutter: 10
     });
+
+    masnry.layout();
+
 });
 
                 // Add an empty list item at the end
