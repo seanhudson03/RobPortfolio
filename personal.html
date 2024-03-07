@@ -87,7 +87,7 @@
                 var msnry;
 
                 // Initialize Masonry after all images have been loaded
-                imagesLoaded(window, function() {
+                imagesLoaded(ulElement, function() {
                     msnry = new Masonry(ulElement, {
                         itemSelector: 'li',
                         columnWidth: 300, /* This should match the width of the grid items */
