@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(19, 19, 19);
+    background-color: #151d22;
     font-family: futura-pt , sans-serif;
     height:100%;
     max-width: 100%;
@@ -37,6 +37,26 @@ a {
   max-width: calc(100% - 19vw); /* Adjusted value */
   overflow-wrap: break-word;
   font-family: futura-pt , sans-serif;
+}
+
+.AboutImage {
+  margin-left: 9.5vw;
+  margin-right: 2vw;
+  max-width: calc(100% - 19vw); /* Adjusted value */
+  overflow-wrap: break-word;
+  font-family: futura-pt , sans-serif;
+}
+
+.AboutText {
+  margin-right: 9.5vw;
+  margin-left: 2vw;
+  max-width: calc(100% - 19vw); /* Adjusted value */
+  overflow-wrap: break-word;
+  font-family: futura-pt , sans-serif;
+}
+
+.AboutText h2 {
+  font-size: 1.5em;
 }
 
 #line {
@@ -182,6 +202,7 @@ th {
  .wrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 10vh; 
 }
 
  #gallery {
