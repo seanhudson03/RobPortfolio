@@ -16,8 +16,7 @@
 
         <table class="center">
           <tr>
-            <th><h2 class="center">Home</h2></th>
-            <th><h2 class="center">Photos</h2></th>
+            <th><h2 class="center" id = "currentPage">Photos</h2></th>
             <th><h2 class="center">Videos</h2></th>
             <th><h2 class="center">About</h2></th>
           </tr>
@@ -28,49 +27,72 @@
 
             
             <script>
-                // Array of image file names
-                const imageFiles = [
-                    "2024.jpeg",
-                    "A2.jpeg",
-                    "black.jpeg",
-                    "Mantra.jpeg",
-                    "Mantra2.jpeg",
-                    "lipflick.jpg",
-                    "changingLives.jpg",
-                    "sean.jpg",
-                    "myBanner.jpg"
-                ];
+                // Array of image objects
+const imageFiles = [
+    { fileName: "2023_Robbie_Vets_PP2_9580.jpg", url: "personal.html", title: "URI: THE BIRDS THE BEES AND EVERYTHING IN BETWEEN" }
+    // Add more image objects here
+];
 
-                // Get the reference to the "ul" element
-                const ulElement = document.querySelector("#imageList");
+// Get the reference to the "ul" element
+const ulElement = document.querySelector("#imageList");
 
-                // Loop through the imageFiles array
-                imageFiles.forEach(function(fileName) {
-                    // Create a new "li" element
-                    const liElement = document.createElement("li");
+// Loop through the imageFiles array
+imageFiles.forEach(function(image) {
+    // Create a new "li" element
+    const liElement = document.createElement("li");
 
-                    // Create a new "img" element
-                    const imgElement = document.createElement("img");
+    // Create a new "a" element
+    const aElement = document.createElement("a");
 
-                    // Set the "src" attribute of the "img" element
-                    imgElement.src = `flicks/${fileName}`;
+    // Set the "href" attribute of the "a" element
+    aElement.href = image.url;
 
-                    // Append the "img" element to the "li" element
-                    liElement.appendChild(imgElement);
+    // Create a new "img" element
+    const imgElement = document.createElement("img");
 
-                    // Append the "li" element to the "ul" element
-                    ulElement.appendChild(liElement);
-                });
+    // Set the "src" attribute of the "img" element
+    imgElement.src = `flicks/${image.fileName}`;
 
-                // Initialize Masonry after all images have been loaded
-                imagesLoaded(window, function() {
-                    new Masonry('#imageList', {
-                        itemSelector: 'li',
-                        columnWidth: 300, /* This should match the width of the grid items */
-                        fitWidth: true, /* This will center the grid within its container */
-                        gutter: 10
-                    });
-                });
+    // Set the "alt" attribute of the "img" element
+    imgElement.alt = image.title;
+
+    // Create a new "div" element
+    const divElement = document.createElement("div");
+
+    // Set the "textContent" of the "div" element
+    divElement.textContent = image.title;
+
+    // Append the "img" and "div" elements to the "a" element
+    aElement.appendChild(imgElement);
+    aElement.appendChild(divElement);
+
+    // Append the "a" element to the "li" element
+    liElement.appendChild(aElement);
+
+    // Append the "li" element to the "ul" element
+    ulElement.appendChild(liElement);
+});
+
+// Initialize Masonry after all images have been loaded
+imagesLoaded(ulElement, function() {
+    // Get the number of images
+    const numImages = ulElement.getElementsByTagName('li').length;
+
+    // Calculate the column width
+    let columnWidth;
+    if (numImages === 1) {
+        columnWidth = ulElement.offsetWidth; // If there's only one image, set the column width to the width of the container
+    } else {
+        columnWidth = 200; // Otherwise, set the column width to 200px (or whatever value you want)
+    }
+
+    new Masonry(ulElement, {
+        itemSelector: 'li',
+        columnWidth: columnWidth,
+        fitWidth: true,
+        gutter: 10
+    });
+});
 
                 // Add an empty list item at the end
                 const emptyLiElement = document.createElement("li");

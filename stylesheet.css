@@ -1,19 +1,37 @@
+@font-face{
+  font-family:futura-pt; 
+  src: url(fonts/FuturaCyrillicBook.ttf)
+}
+
 body {
     background-color: rgb(19, 19, 19);
+    font-family: futura-pt , sans-serif;
     height:100%;
     max-width: 100%;
     overflow-x: hidden;
+    font-size: 100%;
 }
 head{
     height:100%;
 }
 
+.ProjText {
+  margin-left: 9.5vw;
+  max-width: calc(100% - 19vw); /* Adjusted value */
+  overflow-wrap: break-word;
+  font-family: futura-pt , sans-serif;
+}
+
 #line {
-  background-color: ghostwhite;
-   height: 0.6vh;
-   margin-left:25vw;
-   margin-right: 25vw;
-   margin-top: 5vh;
+  background-color: #8DF0D4;
+  height: 0.2vh;
+  padding-top:0vw;
+  padding-left:0vw;
+  margin-left: 9.5vw;
+  margin-right: 9.5vw;
+  margin-top: 0vh;
+  margin-bottom: 5vh;
+  border: 0vh solid #3A947A;
 }
 
 .aboutimg {
@@ -57,25 +75,33 @@ head{
 }
 
 p {
-    font-family: "future-pt", sans-serif;
+    font-family: futura-pt , sans-serif;
     color: ghostwhite;
     
 }
 
 h1 {
-    font-family: "futura-pt", sans-serif;
-    color: ghostwhite;
+    font-family: futura-pt , sans-serif;
+    font-size: 3em;
+    color: #8DF0D4 ; /* #3A947A*/
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-top: 2.5vh;
-    margin-bottom: 0px;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
 }
 
 h2 { 
-    font-family: "futura-pt", sans-serif;
-    color: ghostwhite;
-    padding-top: 0px;
-    margin-top: 0px;
+  font-family: futura-pt , sans-serif;
+  font-size: 1em;
+  color: #8DF0D4;
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+h2#currentPage {
+  color: #3A947A;
 }
 
 
@@ -85,6 +111,7 @@ table .button{
     transition: transform .25s ease-in-out;
     margin-left: 10px;
     margin-right: 10px;
+    
 }
 
 table .button:hover {
@@ -94,15 +121,17 @@ table .button:hover {
 table { 
     margin-left: auto;
     margin-right: auto;
-    padding-left:0;
-    padding-right:0;
+    padding: 0px 0px;
     width: 60 vw;
 }
 
 th {
-    margin-left: 8vw;
-    margin-right: 8vw;
-    padding: 1vw 4.5vw;
+    margin-left: 5.5vw;
+    margin-right: 5.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 0px;
+    padding-bottom:0px;
 }
 
 .center {
@@ -133,25 +162,63 @@ th {
    padding: 0;
  }
 
-#gallery {
+ .wrapper {
   display: flex;
   justify-content: center;
-  width: 100vw;
+}
+
+ #gallery {
+  display: flex;
+  justify-content: center;
+  width: calc(100vw - 17px); /* Subtract the width of the scrollbar */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul#imageList {
   text-align: center;
+  width: calc(100vw - 17px); /* Subtract the width of the scrollbar */
   margin: auto;
   padding: 0;
 }
 
 ul#imageList li {
-  width: 300px; /* Adjust this value to set the width of the grid items */
+  width: 40vw; /* Adjust this value to set the width of the grid items */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 0;
 }
 
 ul#imageList img {
   max-width: 100%;
   height: auto;
+  transition: opacity 0.3s ease;
+}
+
+#imageList a {
+  position: relative;
+  display: block;
+}
+
+#imageList a:hover img {
+  opacity: 0.5;
+}
+
+#imageList div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#imageList a:hover div {
+  opacity: 1;
 }
 
 /*
