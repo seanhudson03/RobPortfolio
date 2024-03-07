@@ -63,7 +63,7 @@
                 });
 
                 // Initialize Masonry after all images have been loaded
-                imagesLoaded(ulElement, function() {
+                imagesLoaded(window, function() {
                     new Masonry('#imageList', {
                         itemSelector: 'li',
                         columnWidth: 300, /* This should match the width of the grid items */
