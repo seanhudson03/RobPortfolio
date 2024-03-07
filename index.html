@@ -1,45 +1,80 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Robert Vets</title>
         <link rel="stylesheet" href="stylesheet.css">
+        <script src="jquery-3.7.1.min.js"></script>
     </head>
     <body>
-        <h1 class = "center">Robert Vets</h1>
+        <h1 class="center">Robert Vets</h1>
         
-        <hr style="background-color: ghostwhite; height: 0.6vh; margin-left:25vw; margin-right: 25vw; margin-top: 5vh">
+        <hr id="line">
 
-        <table class = "center">
+        <table class="center">
           <tr>
-            <th><h2 class = "center">Home</h2></th>
-            <th><h2 class = "center">Photos</h2></th>
-            <th><h2 class = "center">Videos</h2></th>
-            <th><h2 class = "center">About</h2></th>
+            <th><h2 class="center">Home</h2></th>
+            <th><h2 class="center">Photos</h2></th>
+            <th><h2 class="center">Videos</h2></th>
+            <th><h2 class="center">About</h2></th>
           </tr>
         </table>
 
-        <div id = "gallery">
-        <ul>
-          <li>
-            <img src="flicks/2024.jpeg" alt="Image 1">
-          </li>
-          <li>
-            <img src="flicks/A2.jpeg" alt="Image 2">
-          </li>
-          <li>
-            <img src="flicks/black.jpeg" alt="Image 3">
-          </li>
-          <li>
-            <img src="flicks/Mantra.jpeg" alt="Image 4">
-          </li>
-          <li>
-            <img src="flicks/Mantra2.jpeg" alt="Image 5">
-          </li>
-          
-          <li> </li>
-        </ul>
+        <div id="gallery">
+            <ul id="imageList"></ul>
+
+            <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+            <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+            <script>
+                // Array of image file names
+                const imageFiles = [
+                    "2024.jpeg",
+                    "A2.jpeg",
+                    "black.jpeg",
+                    "Mantra.jpeg",
+                    "Mantra2.jpeg",
+                    "lipflick.jpg",
+                    "changingLives.jpg",
+                    "sean.jpg",
+                    "myBanner.jpg"
+                ];
+
+                // Get the reference to the "ul" element
+                const ulElement = document.querySelector("#imageList");
+
+                // Loop through the imageFiles array
+                imageFiles.forEach(function(fileName) {
+                    // Create a new "li" element
+                    const liElement = document.createElement("li");
+
+                    // Create a new "img" element
+                    const imgElement = document.createElement("img");
+
+                    // Set the "src" attribute of the "img" element
+                    imgElement.src = `flicks/${fileName}`;
+
+                    // Append the "img" element to the "li" element
+                    liElement.appendChild(imgElement);
+
+                    // Append the "li" element to the "ul" element
+                    ulElement.appendChild(liElement);
+                });
+
+                // Initialize Masonry after all images have been loaded
+                imagesLoaded(ulElement, function() {
+                    new Masonry('#imageList', {
+                        itemSelector: 'li',
+                        columnWidth: 300, /* This should match the width of the grid items */
+                        fitWidth: true, /* This will center the grid within its container */
+                        gutter: 10
+                    });
+                });
+
+                // Add an empty list item at the end
+                const emptyLiElement = document.createElement("li");
+                ulElement.appendChild(emptyLiElement);
+            </script>
         </div>
     </body>
 </html>
