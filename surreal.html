@@ -71,9 +71,21 @@
                 });
 
                 var msnry;
+                
+                
 
                 // Initialize Masonry after all images have been loaded
                 imagesLoaded(ulElement, function() {
+
+                    var columnWidthValue = 300;
+                    var fitWidthValue = true;
+
+                    // Adjust the columnWidth and fitWidth options for mobile devices
+                    if (window.innerWidth <= 600) {
+                        columnWidthValue = window.innerWidth * 0.82; // 82% of the screen width
+                        fitWidthValue = true; // Center the grid within its container
+                    }
+
                     msnry = new Masonry(ulElement, {
                         itemSelector: 'li',
                         columnWidth: 300, /* This should match the width of the grid items */
