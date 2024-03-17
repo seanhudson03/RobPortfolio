@@ -226,6 +226,7 @@ th {
   #gallery {
       padding: 0; 
       margin: 0 auto; 
+      width: 81%
   }
 
   #imageList li img {
