@@ -216,9 +216,21 @@ th {
  #gallery {
   display: flex;
   justify-content: center;
-  width: calc(100vw - 17px); /* Subtract the width of the scrollbar */
+  width: 81%; 
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Add this media query for mobile devices */
+@media screen and (max-width: 600px) {
+  #gallery {
+      padding: 0; 
+      margin: 0 auto; 
+  }
+
+  #imageList li img {
+      width: 100%; 
+  }
 }
 
 ul#imageList {
