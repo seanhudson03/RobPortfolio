@@ -6,7 +6,9 @@
 body {
     background-color: #151d22;
     font-family: futura-pt , sans-serif;
-    height:100%;
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
     max-width: 100%;
     overflow-x: hidden;
     font-size: 100%;
@@ -30,6 +32,10 @@ a {
   padding-bottom: 0px;
   margin-top: 5vh;
   margin-bottom: 1vh;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .ProjText {
@@ -90,6 +96,18 @@ a {
   margin-right: 9.5vw;
   margin-top: 0vh;
   margin-bottom: 5vh;
+  border: 0vh solid #3A947A;
+}
+
+#line2 {
+  background-color: #8DF0D4;
+  height: 0.2vh;
+  padding-top:0vw;
+  padding-left:0vw;
+  margin-left: 9.5vw;
+  margin-right: 9.5vw;
+  margin-top: 4vh;
+  margin-bottom: 2vh;
   border: 0vh solid #3A947A;
 }
 
@@ -299,6 +317,51 @@ ul#imageList img {
   opacity: 1;
 }
 
+.centerFoot {
+  align-content: center;
+  max-width: 82vw;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2%
+}
+
+.centerFoot p{
+  margin-top: 0;
+  margin-bottom: 2%;
+  padding: 0;
+  font-size: 90%;
+}
+
+.centerFoot h2 {
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 2%;
+  font-size: 90%;
+}
+
+.foot {
+  display: flex;
+  max-width: 82vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  padding: 0;
+  justify-content: center;
+}
+
+.foot h2, .foot p {
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+
+
 /* Add this media query for mobile devices */
 @media screen and (max-width: 600px) {
   #gallery {
@@ -363,6 +426,26 @@ ul#imageList img {
     width: 100%;
     text-align: center;
     font-size: 1.5em;
+  }
+
+  .foot {
+    display: flex;
+    flex-direction: column;
+    max-width: 82vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vw;
+    margin-bottom: 4vw;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  .foot h2, .foot p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
   }
 }
 
