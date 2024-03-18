@@ -96,14 +96,24 @@
 
                 // Initialize Masonry after all images have been loaded
                 imagesLoaded(ulElement, function() {
+                    var columnWidthValue = 300;
+                    var fitWidthValue = true;
+                    var gutterValue = 10;
+
+                    // Adjust the columnWidth and fitWidth options for mobile devices
+                    if (window.innerWidth <= 600) {
+                        var imageListElement = document.getElementById('imageList');
+                        columnWidthValue = imageListElement.offsetWidth; 
+                        fitWidthValue = true; // Center the grid within its container
+                        gutterValue = 0;
+                    }
+
                     msnry = new Masonry(ulElement, {
                         itemSelector: 'li',
-                        columnWidth: 300, /* This should match the width of the grid items */
-                        fitWidth: true, /* This will center the grid within its container */
-                        gutter: 10
+                        columnWidth: columnWidthValue, /* This should match the width of the grid items */
+                        fitWidth: fitWidthValue, /* This will center the grid within its container */
+                        gutter: gutterValue
                     });
-
-                    masnry.layout();
 
                 });
                 // Call the layout method on window resize

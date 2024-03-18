@@ -35,17 +35,19 @@
                 // Array of image objects
 const imageFiles = [
     { fileName: "2023_Robbie_Vets_PP2_9580.jpg", url: "personal.html", title: "URI: THE BIRDS THE BEES AND EVERYTHING IN BETWEEN" },
-    { fileName: "2024_Robbie_Vets_A2_3_1.jpg", url: "surreal.html", title: "SURREALISM" }
+    { fileName: "2024_Robbie_Vets_A2-0787_1.jpg", url: "surreal.html", title: "SURREALISM" }
     // Add more image objects here
 ];
 
 // Get the reference to the "ul" element
 const ulElement = document.querySelector("#imageList");
 
-// Loop through the imageFiles array
+let lastTappedElement = null;
+
 imageFiles.forEach(function(image) {
     // Create a new "li" element
     const liElement = document.createElement("li");
+    liElement.className = "aboutimg"; // Add the "aboutimg" class to the "li" element
 
     // Create a new "a" element
     const aElement = document.createElement("a");
@@ -64,6 +66,7 @@ imageFiles.forEach(function(image) {
 
     // Create a new "div" element
     const divElement = document.createElement("div");
+    divElement.className = "caption"; // Add the "caption" class to the "div" element
 
     // Set the "textContent" of the "div" element
     divElement.textContent = image.title;
@@ -77,29 +80,55 @@ imageFiles.forEach(function(image) {
 
     // Append the "li" element to the "ul" element
     ulElement.appendChild(liElement);
+
+    // Check if the user is on a mobile device
+    if (window.matchMedia("only screen and (max-width: 760px)").matches) {
+    // Store the href attribute in a variable and then remove it from the a element
+    let href = aElement.getAttribute('href');
+    aElement.removeAttribute('href');
+
+    // Add an event listener for the touchend event to the image
+    imgElement.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (lastTappedElement && lastTappedElement !== liElement) {
+            lastTappedElement.setAttribute('data-show-caption', 'false');
+        }
+
+        const showCaption = liElement.getAttribute('data-show-caption') === 'true';
+        liElement.setAttribute('data-show-caption', !showCaption);
+
+        if (showCaption) {
+            window.location.href = href;
+        }
+
+        lastTappedElement = liElement;
+    });
+}
 });
 
 // Initialize Masonry after all images have been loaded
 imagesLoaded(ulElement, function() {
-    // Get the number of images
-    const numImages = ulElement.getElementsByTagName('li').length;
+    
+    var columnWidthValue = 300;
+        var fitWidthValue = true;
+        var gutterValue = 10;
 
-    // Calculate the column width
-    let columnWidth;
-    if (numImages === 1) {
-        columnWidth = ulElement.offsetWidth; // If there's only one image, set the column width to the width of the container
-    } else {
-        columnWidth = 196; // Otherwise, set the column width to 200px (or whatever value you want)
-    }
+        // Adjust the columnWidth and fitWidth options for mobile devices
+        if (window.innerWidth <= 600) {
+            var imageListElement = document.getElementById('imageList');
+            columnWidthValue = imageListElement.offsetWidth; 
+            fitWidthValue = true; // Center the grid within its container
+            gutterValue = 0;
+        }
 
-    new Masonry(ulElement, {
-        itemSelector: 'li',
-        columnWidth: columnWidth,
-        fitWidth: true,
-        gutter: 10
-    });
-
-    msnry.layout();
+        msnry = new Masonry(ulElement, {
+            itemSelector: 'li',
+            columnWidth: columnWidthValue, /* This should match the width of the grid items */
+            fitWidth: fitWidthValue, /* This will center the grid within its container */
+            gutter: gutterValue
+        });
 
 });
 
