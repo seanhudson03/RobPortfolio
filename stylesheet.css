@@ -100,6 +100,23 @@ footer {
   padding:0px 0px;
 }
 
+.vidwrapper {
+  margin-left: 9.5vw;
+  margin-right: 9.5vw;
+  margin-bottom: 5vh;
+  position: relative;
+  padding-bottom: 45.5625%; /* for an aspect ratio of 16:9 */
+  overflow: hidden;
+}
+
+#video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .abtwrapper {
   display: flex;
   justify-content: center;
